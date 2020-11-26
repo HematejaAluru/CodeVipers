@@ -1,0 +1,104 @@
+<!-- chat/templates/chat/room.html -->
+
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'afterlogin.css' %}">
+</head>
+<body bgcolor=#42455a style="padding-top: 10vh;">
+    <div class="logook">
+        <img src="{%static 'mani.png' %}">
+    </div>
+    
+    <div class="menu">
+    <!--<ul>
+    <li><a href="parallel" target="_blank" style="top:70px;
+        left:400px;
+        font-size:20px;
+        position: absolute;
+        text-decoration: none;
+        list-style-type: none;
+        color: #fff;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+        background-origin: border-box;
+        background-clip: content-box,border-box;"><span>Make a Parallel Vipe</span></a></li>
+    </ul> -->
+</div>
+    <textarea id="chat-log" cols="100" rows="20" class="postform"  name="mytextarea" style="font-size:25px;margin-top:120px;width:360px;height:400px;" rows="40" placeholder="  You have made no Vipes" readonly ></textarea><br>
+    
+    <form id="myform">
+    <textarea id="chat-message-input" type="text" placeholder="Enter your Vipe here" size="200"style="position:absolute; margin-top:90px; margin-bottom:70px; height:100px;width:200px; border-radius:14px;right:200px;font-size:17px"></textarea><br>
+    
+    <li onclick="myForm.submit();" id="chat-message-submit" style="background-color: #4690fb;width: 210px;
+            position:absolute;
+            top:420px;
+            right:197px;
+            text-align: center;
+            list-style-type: none;
+            color: #fff;
+            border-radius:30px;
+            font-size:19px;
+            cursor:pointer;
+            border: 0.6px solid transparent;
+            background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+            background-origin: border-box;
+            background-clip: content-box,border-box;">Make a Vipe</li>
+    </form>
+    {{ room_name|json_script:"room-name" }}
+    <h2 style="right:67px;
+        position: absolute;
+        font-size: 17px;
+        top: 530px;
+        right: 45px;
+        border: 2px solid transparent;
+        border-radius: 20px;
+        background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+        background-origin: border-box;
+        background-clip: content-box,border-box;
+    
+        color: white;
+    "><span style="display: block;
+    padding: 4px 13px;">Made by A.V.N.M.HemaTeja</span></h2>
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+
+        document.querySelector('#chat-message-submit').onclick = function(e) {
+            const messageInputDom = document.querySelector('#chat-message-input');
+            const message = messageInputDom.value;
+            chatSocket.send(JSON.stringify({
+                'message': message
+            }));
+            messageInputDom.value = '';
+        };
+    </script>
+</body>
+</html>

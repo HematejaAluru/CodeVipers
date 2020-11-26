@@ -1,0 +1,82 @@
+{%load static%}
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'happy.css' %}">
+    <style>
+        textarea
+        {
+            resize: none;
+            overflow: hidden;
+            width: 500px;
+            min-height: 50px;
+            padding: 2px;
+            line-height: 13px;
+            font-size: 13px;
+           
+        }
+       
+        div
+        {
+            /*Don't make display as none. scrollHeight and offsetHeight is 0 for display property as none.*/
+            overflow: hidden;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            width: 500px;
+            height: 0px;
+            padding: 2px;
+            line-height: 13px;
+            font-size: 13px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            //Don't use keypress event. keypress event doesn't detect backspace and delete keys.
+            window.document.querySelector("textarea").addEventListener("keydown", function() {
+                var content = window.document.querySelector("textarea").value;
+                window.document.querySelector("#divContainer").innerHTML = content;
+                window.document.querySelector("textarea").style.height = window.document.querySelector("#divContainer").scrollHeight + "px";
+            }, false);
+        }, false);
+    </script>
+</head>
+<body bgcolor="#42455a">
+
+    <div id="divContainer">
+    </div>
+    <form action="createreply" method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+    <input type="number" name="replyid" value={{pp}} style="visibility: hidden;">
+    <input type="text" name="replynam" value={{nn}} style="visibility: hidden;">
+
+    <div class="image-upload">
+        <label for="file_input">
+            <img src="{%static 'uploadphotoicon.png'%}" style="position:absolute;width:30px;cursor:pointer;right:490px;margin-top:30px;"/>
+        </label>
+    
+        <input id="file_input" name="frame" type="file" style="cursor:pointer;display: none;" accept="image/*"/>
+    </div>
+    <textarea name="replyy" cols="30" rows="10" style="border-radius: 10px;color:#42455a;font-size:20px;min-width:600px;min-height:200px;margin-left:200px ;position:relative;font-family: 'Baloo Bhaina 2', cursive;margin-top:60px;">
+        
+    </textarea>
+    <input type="submit" value="Reply" style="background-color: #fff;width: 67px;
+                height:30px;
+                position:absolute;
+                margin-top:200px;
+                left:1100px;
+                text-align: center;
+                padding: 2px 2px;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                border: 1px solid transparent;
+                background-image: linear-gradient(#fff,#fff),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+                background-origin: border-box;
+                background-clip: content-box,border-box;">    
+</form>
+</body>
+</html>

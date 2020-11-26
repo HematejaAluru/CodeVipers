@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGGED IN</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'afterlogin.css' %}">
+
+</head>
+<body bgcolor=#42455a style="padding-top: 10vh;">
+    <div class="logook">
+        <img src="{%static 'mani.png' %}">
+    </div>
+    <div class="form-container">
+
+        <div class="form-2">
+            
+            
+        </div>
+    </div>
+    <div>
+        <form action="createform" id="myform" method="POST" > 
+
+            
+            <textarea class="postform" name="mytextarea" rows="40" placeholder="       Enter your Vipe here" >
+            </textarea>
+            <br>
+            <li><a href="createform" onclick="document.getElementById('myForm').submit();" class="signup-btn"><span>Make a Vipe</span></a></li>
+            {%for i in postlist%}
+            <h1>{{i.username}}</h1>
+            <h2>{{i.userform}}</h2>
+            {%endfor%}
+        </form>
+        
+    </div>
+
+</body>
+</html>

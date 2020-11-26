@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'testw.css' %}">
+    
+    
+</head>
+<body bgcolor=#42455a style="padding-top: 10vh;">
+    <div class="logook">
+    <img src="{%static 'mani.png' %}">
+    </div>
+
+    <form id="myForm" action="test" method="post">
+        {%csrf_token%}    
+        <div class="form-container" >
+        <ul class="list">
+            <div class="user-img"></div>
+            <li><h2>Sign up</h2></li>
+            <li><input type="text" name="user_name" placeholder="username"></li>
+            <li><input type="password" name="pass" placeholder="password"></li>
+            <li><input type="email" name="email" placeholder="email"></li>
+            <li><input type="text" name="phone" placeholder="phonenumber"></li>
+            <li onclick="myForm.submit();"style="background-color: #4690fb;width: 250px;
+            text-align: center;
+            padding: 8px 0px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;">submit</li>
+            <br>
+        </ul>
+    </div>
+</form>
+    <h2 class="show"style="right:67px;"><span>Made by A.V.N.M.HemaTeja</span></h2>
+    
+</body>
+</html>

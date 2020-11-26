@@ -1,0 +1,141 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'happy.css' %}">
+    <style>            
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            //Don't use keypress event. keypress event doesn't detect backspace and delete keys.
+            window.document.querySelector("textarea").addEventListener("keydown", function() {
+                var content = window.document.querySelector("textarea").value;
+                window.document.querySelector("#divContainer").innerHTML = content;
+                window.document.querySelector("textarea").style.height = window.document.querySelector("#divContainer").scrollHeight + "px";
+            }, false);
+        }, false);
+    </script>
+</head>
+<body bgcolor="#42455a">
+    <form action="create" method="POST" enctype="multipart/form-data" id="myForm" >
+        {%csrf_token%}
+    <input type="text" style="visibility:hidden;"  name="userer" value= {{p1}}>
+
+    <div class="image-upload">
+        <label for="file_input">
+            <img src="{%static 'uploadphotoicon.png'%}" style="position:absolute;width:30px;cursor:pointer;right:490px;margin-top:30px;"/>
+        </label>
+    
+        <input id="file_input" name="filer" type="file" style="cursor:pointer;display: none;" accept="image/*"/>
+    </div>
+    <div style="overflow: hidden;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    width: 500px;
+    height: 0px;
+    padding: 2px;
+    line-height: 13px;
+    font-size: 13px;">
+    </div>
+    <textarea name="ques" cols="30" rows="10" style="border-radius: 20px;width:400px;height:200px;margin-left:360px ;position:relative;font-family: 'Baloo Bhaina 2', cursive;resize: none;
+    overflow: hidden;
+    width: 400px;
+    min-height: 50px;
+    padding: 2px;
+    line-height: 13px;
+    color:#42455a;
+    font-size: 22px;">
+        
+</textarea><br>
+    
+    <li onclick="myForm.submit();" style="background-color: #4690fb;width: 140px;
+            position:absolute;
+            top:110px;
+            right:197px;
+            text-align: center;
+            list-style-type: none;
+            color: #fff;
+            border-radius:30px;
+            font-size:19px;
+            cursor:pointer;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+            background-origin: border-box;
+            background-clip: content-box,border-box;">Make a Vipe</li>
+
+</form>
+
+    {%for i in P%}
+    <div class="form-container" style="width: 800px;" >
+        
+            
+            
+            
+            <h2 style="position:relative;font-size:13px;margin:auto;text-align:right;color:#42455a;font-family: 'Baloo Bhaina 2', cursive;">~{{i.name}}</h2>
+            {%if i.postimage.name is not null%}
+            <h2 style="position:relative;font-size:22px;margin-top:-10px;text-align:center;color:#42455a;font-family: 'Baloo Bhaina 2', cursive;">{{i.question}}</h2>
+            <img src="/media/images/{{i.postimage.name}}" style="width:300px;height:auto;margin-left:240px;" onerror="this.style.display='none';" alt="visibility">
+            {%else%}
+            <h2 style="position:relative;font-size:40px;top:150px;text-align:center;color:#42455a;font-family: 'Baloo Bhaina 2', cursive;">{{i.question}}</h2>
+            {%endif%}
+            <form action="ideer"  method="POST"  >
+                    
+                {%csrf_token%}
+                <input type="number" style="visibility:hidden;" name="ider" value={{i.id}}  >
+                <input type="text" style="visibility: hidden;" name="ide" value={{i.name}} >
+                <input type="submit" value="Reply" style="background-color: #fff;width: 67px;
+                height:30px;
+                position:absolute;
+                left:50px;
+                text-align: center;
+                padding: 2px 2px;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                border: 1px solid transparent;
+                background-image: linear-gradient(#fff,#fff),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+                background-origin: border-box;
+                background-clip: content-box,border-box;">
+                
+            </form>
+                <!-- <ul>
+                <li onclick="happyForm.submit();" style="background-color:#fff;width: 70px;
+                position:relative;
+                top:20px;
+                left:50px;
+                text-align: center;
+                list-style-type: none;
+                color: #42455a;
+                border-radius:30px;
+                font-size:19px;
+                cursor:pointer;
+                border: 2px solid transparent;
+                background-image: linear-gradient(#fff,#fff),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+                background-origin: border-box;
+                background-clip: content-box,border-box;">Reply</li>
+                </ul>-->
+            
+    </div>
+            {%for j in Q%}
+            {%ifequal j.connector i.id %}
+            <div class="form-container" style="width: 40%;height: 10;">
+            <h1 style="position:relative;margin-top:-40px;font-size:15px;text-align:left;color:#42455a;font-family:'Baloo Bhaina 2', cursive;">~Reply</h1>   
+            <h2 style="position:relative;margin-top:50px;font-size:22px;text-align:center;color:#42455a;font-family: 'Baloo Bhaina 2', cursive;">{{j.reply}}</h2>
+            {%if j.replyimage.name is not null%}
+            <img src="/media/images/{{j.replyimage.name}}" style="width:300px;height:auto;margin-left:130px;" onerror="this.style.display='none';" alt="{{j.name}}">
+            {%endif%}
+            <h1 style="position:relative;font-size:13px;bottom:5px;text-align:right;color:#42455a;font-family: 'Baloo Bhaina 2', cursive;">~{{j.name}}</h1>
+            
+            </div>
+            {%endifequal%}
+            {%endfor%}
+        </ul>
+     
+    {%endfor%}
+
+</body>
+</html>

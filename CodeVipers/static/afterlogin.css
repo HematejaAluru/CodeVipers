@@ -1,0 +1,143 @@
+.form-2{
+
+    width: 800px;
+    height: 230px;
+    padding: 40px 30px;
+    background-color: #42455a;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #000;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;    
+
+}
+.form-container{
+    width: 1200px;
+    height: 1000px;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #000;
+    margin: auto;
+    margin-top: 180px;
+    position: relative;
+}
+ul.list{
+    list-style-type: none;
+    text-align: center;
+
+}
+ul.list li{
+    width: 250px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.signup-btn{
+    top:30px;
+    position: absolute;
+    list-style-type: none;
+    right:750px;
+    
+    text-decoration: none;
+    color: #fff;
+    border: 4px solid transparent;
+    border-radius: 0px;
+    background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+    background-origin: border-box;
+    background-clip: content-box,border-box;
+    
+}
+.signup-btn span{
+    display: block;
+    padding: 6px 12px;
+    list-style-type: none;
+
+}
+.sender{
+    width: 30px;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+.logook img{
+    width: 80px;
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 70px;
+
+}
+.postform{
+    position: absolute;
+    top: 20px;
+    left: 305px;
+    width: 730px;
+    height: 300px;
+    border-radius: 20px;
+}
+textarea{
+    font-size: 30px;
+}
+
+.menu ul{
+    display: inline-flex;
+    margin: 30px;
+
+}
+.login-btn{
+    top:40px;
+    right:200px;
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+    background-origin: border-box;
+    background-clip: content-box,border-box;
+}
+.login-btn span{
+
+    display: block;
+    padding: 4px 13px;
+
+
+
+}
+.menu ul li{
+    list-style: none;
+    margin: 0 20px;
+    color: #b2b1b1;
+    cursor: pointer;
+    
+}
+ul.list{
+    list-style-type: none;
+    text-align: center;
+
+}
+ul.list li{
+    width: 250px;
+    margin-bottom: 15px;
+}
+.show{
+    position: absolute;
+    font-size: 17px;
+    top: 530px;
+    right: 45px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+    background-origin: border-box;
+    background-clip: content-box,border-box;
+
+    color: white;
+
+}
+.show span{
+    
+    display: block;
+    padding: 4px 13px;
+
+}

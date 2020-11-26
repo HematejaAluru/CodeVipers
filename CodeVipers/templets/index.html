@@ -1,0 +1,45 @@
+<!-- chat/templates/chat/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body bgcolor=#42455a style="padding-top: 10vh;">
+    
+    <h4 style="font-size:26px;color:#fff;position:absolute;right:500px;margin-top:150px;">What chat room would you like to enter?</h4><br>
+    <form action="roomname" method="POST" id="myform">
+        {%csrf_token%}
+    <input id="room-name-input" name="okna" type="text" size="100" placeholder="Name of the chatroom" style="text-align:center;position:absolute; margin-top:250px;right:620px; width:200px;border-radius:30px;" ><br>
+    <li onclick="myForm.submit();" id="room-name-submit" style="background-color: #4690fb;width: 210px;
+            position:absolute;
+            top:450px;
+            right:615px;
+            text-align: center;
+            list-style-type: none;
+            color: #fff;
+            border-radius:30px;
+            font-size:19px;
+            cursor:pointer;
+            border: 0.6px solid transparent;
+            background-image: linear-gradient(#42455a,#42455a),radial-gradient(circle at top left,#12c2e9,#c471ed,#f64f59);
+            background-origin: border-box;
+            background-clip: content-box,border-box;">submit</li>
+    
+</form>
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>

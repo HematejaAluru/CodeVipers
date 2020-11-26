@@ -1,0 +1,63 @@
+.image-upload > input
+{
+    cursor:pointer;
+    display: none;
+}
+
+.image-upload img
+{
+    width: 40px;
+    cursor: pointer;
+}
+.okbabu{
+    width: 300px;
+
+
+}
+.form-container{
+    width: 380px;
+    padding: 60px 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #000;
+    margin: auto;
+    margin-top: 60px;
+    position: relative;
+}
+ul.list{
+    list-style-type: none;
+    text-align: center;
+
+}
+ul.list li{
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+ul.list li input{
+    width: 250px;
+    text-align: center;
+    padding: 8px 0px;
+    border: none;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+ul.list li input[type="button"]{
+    background-color: #4690fb;
+    color: #fff;
+}
+
+
+.user-img{
+    background: url('pngwavefinal.png') no-repeat;
+    width: 130px;
+    height: 130px;
+    background-size: 100%;
+    position: absolute;
+    top: -100px;
+    left: 130px;
+
+}
+.image-upload>input {
+    display: none;
+  }

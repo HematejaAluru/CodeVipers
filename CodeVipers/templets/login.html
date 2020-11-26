@@ -1,0 +1,39 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'testw.css' %}">
+
+</head>
+
+<body bgcolor=#42455a style="padding-top: 10vh;">
+    <div class="logook">
+        <img src="{%static 'mani.png' %}">
+        </div>
+        <form id="myForm" action="login2" method="post">
+            {%csrf_token%}
+        <div class="form-container">
+            <ul class="list">
+                <div class="user-img">
+                </div>
+                <li><h2>Sign in</h2></li>
+                <li><input type="text" name="user_namee" placeholder="username"></li>
+                <li><input type="password" name="passs" placeholder="password"></li>
+                <li onclick="myForm.submit();"style="background-color: #4690fb;width: 250px;
+                text-align: center;
+                padding: 8px 0px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;">submit</li>
+                <br>
+                <a href="forgotpass" style="text-decoration: none;color:black;"><li>Forgot Password ?</li></a>
+            </ul>
+        </div>
+        </form>
+        <h2 class="show"style="right:67px;"><span>Made by A.V.N.M.HemaTeja</span></h2>
+
+</body>
+</html>
